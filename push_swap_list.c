@@ -49,9 +49,10 @@ void	ft_lstadd_back(t_pslst **lst, t_pslst *new, int size)
 void	ft_lst_put_index(t_pslst *lst, int size)
 {
 	t_pslst	*tmp;
-	int i = 0;
+	int i;
 
 	tmp = lst;
+	i = 0;
 	while(i < size)
 	{
 		tmp->index = i;

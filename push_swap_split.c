@@ -1,5 +1,5 @@
 #include "pswap.h"
-#include <stdio.h>
+
 int white_space(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ')
@@ -9,8 +9,9 @@ int white_space(char c)
 
 void freelestrucs(char **tab)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (tab[i])
 	{
 		free(tab[i]);
@@ -18,11 +19,14 @@ void freelestrucs(char **tab)
 	}
 	free(tab);
 }
+
 int count_words(char *str)
 {
-	int i = 0;
-	int count = 0;
+	int i;
+	int count;
 
+	i = 0;
+	count = 0;
 	if (!white_space(str[0]))
 	{
 		count += 1;
@@ -39,8 +43,9 @@ int count_words(char *str)
 
 int get_word_len(char *str)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (!white_space(str[i]) && str[i])
 		i++;
 	return (i);
@@ -49,14 +54,16 @@ int get_word_len(char *str)
 char *duplicate_wrd(char *str)
 {
 	char *dup;
-	int word_len = get_word_len(str);
-	int i = 0;
+	int word_len;
+	int i;
 
+	word_len = get_word_len(str);
 	if (!str)
 		return (NULL);
 	dup = malloc(sizeof(char) * (word_len + 1));
 	if (!dup)
 		return (NULL);
+	i = 0;
 	while (i < word_len)
 	{
 		dup[i] = str[i];
@@ -65,6 +72,7 @@ char *duplicate_wrd(char *str)
 	dup[i] = '\0';
 	return(dup);
 }
+
 char **ft_split(char *str)
 {
 	char **tab;

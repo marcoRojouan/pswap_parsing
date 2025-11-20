@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 20:56:25 by loup              #+#    #+#             */
-/*   Updated: 2025/11/20 15:43:01 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/20 16:03:46 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ char    **rearrange_args(int ac, char **av)
 {
     char *joined_args;
     char **splitted_args;
-    int i = 1;
+    int i;
 
     joined_args = malloc(sizeof(char) * 1);
     if (!joined_args)
         return (NULL);
     joined_args[0] = '\0';
+    i = 1;
     while (i < ac)
     {
         joined_args = ft_strjoin(joined_args ,av[i]);
@@ -39,7 +40,9 @@ char    **rearrange_args(int ac, char **av)
 
 char    **parsing_args(int ac, char **av)
 {
-    char **parsed_args = rearrange_args(ac, av);
+    char **parsed_args;
+    
+    parsed_args = rearrange_args(ac, av);
     if (!parsed_args)
         return (0);
     if (is_valid_data(parsed_args))
@@ -53,7 +56,6 @@ char    **parsing_args(int ac, char **av)
 int main(int ac, char **av)
 {
 	(void)ac;
-	 
 	int i = 0;
 	int iter = 0;
     char **args;
@@ -75,10 +77,9 @@ int main(int ac, char **av)
 		i++;
 	}
 	ft_lst_put_index(a_stack.top, a_stack.size);
-	while (a_stack.top && iter < i * 2)
+	while (a_stack.top && iter < i)
 	{
-		printf("data = %d ", a_stack.top->data);
-		printf("index = %d\n", a_stack.top->index);
+		printf("data[%d] = %d\n",a_stack.top->index, a_stack.top->data);
 		a_stack.top = a_stack.top->next;
 		iter++;
 	}
