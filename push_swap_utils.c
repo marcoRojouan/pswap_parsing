@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loup <loup@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 20:56:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/19 21:44:37 by loup             ###   ########.fr       */
+/*   Updated: 2025/11/20 15:19:02 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,37 @@ char	*ft_strjoin(char *s1, char *s2)
 		tab[j++] = s1[i++];
 	i = 0;
     if (need_space)
-    {
+	{
         tab[j++] = ' ';
-    }
+	}
 	while (s2[i])
 		tab[j++] = s2[i++];
 	tab[j] = '\0';
 	free(s1);
 	return (tab);
+}
+
+int	ft_atoi(const char *nptr)
+{
+	int	i;
+	int	multi;
+	int	nbr;
+
+	i = 0;
+	multi = 1;
+	nbr = 0;
+	while (nptr[i] == ' ' || (nptr[i] >= 9 && nptr[i] <= 13))
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			multi = multi * -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nbr = nbr * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (nbr * multi);
 }
