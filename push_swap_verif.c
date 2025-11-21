@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_verif.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/21 12:21:04 by mrojouan          #+#    #+#             */
+/*   Updated: 2025/11/21 14:13:06 by mrojouan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pswap.h"
 
-int		is_non_num(char **args)
+int	is_non_num(char **args)
 {
 	int	i;
 	int	j;
@@ -11,16 +23,16 @@ int		is_non_num(char **args)
 		j = 0;
 		while (args[i][j])
 		{
-			if((args[i][j] < '0' || args[i][j] > '9') && args[i][j] != '-')
+			if ((args[i][j] < '0' || args[i][j] > '9') && args[i][j] != '-')
 				return (1);
 			j++;
-		}	
+		}
 		i++;
 	}
 	return (0);
 }
 
-int		is_doubles(char **args)
+int	is_doubles(char **args)
 {
 	int	i;
 	int	j;
@@ -40,7 +52,7 @@ int		is_doubles(char **args)
 	return (0);
 }
 
-int		is_valid_data(char **args)
+int	is_valid_data(char **args)
 {
 	if (is_non_num(args))
 		return (1);

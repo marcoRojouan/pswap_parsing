@@ -6,29 +6,30 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 20:56:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/20 15:19:02 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/21 14:08:41 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
 
-static int ft_strlen(char *str)
+static int	ft_strlen(char *str)
 {
-    int i = 0;
-    
-    while (str[i])
-        i++;
-    return (i);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 char	*ft_strjoin(char *s1, char *s2)
 {
 	int		i;
 	int		j;
-    int     need_space;
+	int		need_space;
 	char	*tab;
 
-    need_space = (ft_strlen(s1) > 0);
+	need_space = (ft_strlen(s1) > 0);
 	tab = malloc(ft_strlen(s1) + ft_strlen(s2) + need_space + 1);
 	if (!tab)
 		return (NULL);
@@ -37,9 +38,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s1[i])
 		tab[j++] = s1[i++];
 	i = 0;
-    if (need_space)
+	if (need_space)
 	{
-        tab[j++] = ' ';
+		tab[j++] = ' ';
 	}
 	while (s2[i])
 		tab[j++] = s2[i++];
@@ -71,4 +72,11 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (nbr * multi);
+}
+
+int	white_space(char c)
+{
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
+	return (0);
 }

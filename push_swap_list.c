@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_list.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/21 14:19:15 by mrojouan          #+#    #+#             */
+/*   Updated: 2025/11/21 14:19:58 by mrojouan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pswap.h"
 
 t_pslst	*ft_lstnew(int content)
@@ -17,7 +29,7 @@ t_pslst	*ft_lstnew(int content)
 t_pslst	*ft_lstlast(t_pslst *lst, int size)
 {
 	t_pslst	*last;
-	int i;
+	int		i;
 
 	i = 1;
 	if (!lst)
@@ -49,11 +61,11 @@ void	ft_lstadd_back(t_pslst **lst, t_pslst *new, int size)
 void	ft_lst_put_index(t_pslst *lst, int size)
 {
 	t_pslst	*tmp;
-	int i;
+	int		i;
 
 	tmp = lst;
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		tmp->index = i;
 		tmp = tmp->next;

@@ -1,15 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_split.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/21 12:20:55 by mrojouan          #+#    #+#             */
+/*   Updated: 2025/11/21 14:10:33 by mrojouan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pswap.h"
 
-int white_space(char c)
+void	free_all(char **tab)
 {
-	if ((c >= 9 && c <= 13) || c == ' ')
-		return (1);
-	return (0);
-}
-
-void freelestrucs(char **tab)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])
@@ -20,10 +25,10 @@ void freelestrucs(char **tab)
 	free(tab);
 }
 
-int count_words(char *str)
+int	count_words(char *str)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -41,23 +46,15 @@ int count_words(char *str)
 	return (count);
 }
 
-int get_word_len(char *str)
+char	*duplicate_wrd(char *str)
 {
-	int i;
+	char	*dup;
+	int		word_len;
+	int		i;
 
-	i = 0;
-	while (!white_space(str[i]) && str[i])
-		i++;
-	return (i);
-}
-
-char *duplicate_wrd(char *str)
-{
-	char *dup;
-	int word_len;
-	int i;
-
-	word_len = get_word_len(str);
+	word_len = 0;
+	while (!white_space(str[word_len]) && str[word_len])
+		word_len++;
 	if (!str)
 		return (NULL);
 	dup = malloc(sizeof(char) * (word_len + 1));
@@ -70,15 +67,39 @@ char *duplicate_wrd(char *str)
 		i++;
 	}
 	dup[i] = '\0';
-	return(dup);
+	return (dup);
 }
 
-char **ft_split(char *str)
+int	fill_tab(char *str, char **tab)
 {
-	char **tab;
-	int word_count;
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if ((!white_space(str[i]) && white_space(str[i - 1]))
+			|| (!white_space(str[i]) && !str[i - 1]))
+		{
+			tab[j] = duplicate_wrd(str + i);
+			if (!tab[j])
+			{
+				free_all(tab);
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	tab[j] = 0;
+	return (1);
+}
+
+char	**ft_split(char *str)
+{
+	char	**tab;
+	int		word_count;
 
 	word_count = count_words(str);
 	if (!str)
@@ -86,20 +107,7 @@ char **ft_split(char *str)
 	tab = malloc(sizeof(char *) * (word_count + 1));
 	if (!tab)
 		return (NULL);
-	while (str[i])
-	{
-		if ((!white_space(str[i]) && white_space(str[i - 1])) || (!white_space(str[i]) && !str[i - 1]))
-		{
-			tab[j] = duplicate_wrd(str + i);
-			if (!tab[j])
-			{
-				freelestrucs(tab);
-				return (NULL);
-			}
-			j++;
-		}
-		i++;
-	}
-	tab[j] = NULL;
+	if (!fill_tab(str, tab))
+		return (0);
 	return (tab);
 }
