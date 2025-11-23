@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 20:56:25 by loup              #+#    #+#             */
-/*   Updated: 2025/11/21 14:11:07 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/23 13:51:38 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,34 +53,42 @@ char	**parsing_args(int ac, char **av)
 	}
 	return (parsed_args);
 }
-// int     main(int ac, char **av)
-// {
-// 	(void)ac;
-// 	int i = 0;
-// 	int iter = 0;
-//     char **args;
-// 	t_stack a_stack;
-// 	t_pslst *cur_node;
-// 	a_stack.top = NULL;
-// 	a_stack.size = 0;
 
-//     args = parsing_args(ac, av);
-//     if (!args)
-//     {
-//         return (0);
-//     }
-// 	while (args[i])
-// 	{
-// 		cur_node = ft_lstnew(ft_atoi(args[i]));
-// 		ft_lstadd_back(&a_stack.top, cur_node, a_stack.size);
-// 		a_stack.size++;
-// 		i++;
-// 	}
-// 	ft_lst_put_index(a_stack.top, a_stack.size);
-// 	while (a_stack.top && iter < i)
-// 	{
-// 		printf("data[%d] = %d\n",a_stack.top->index, a_stack.top->data);
-// 		a_stack.top = a_stack.top->next;
-// 		iter++;
-// 	}
-// }
+t_stack	fill_stack(char **args, t_stack stack)
+{
+	t_pslst *cur_node;
+	int		i; 
+	
+	i = 0;
+	while (args[i])
+	{
+		cur_node = ft_lstnew(ft_atoi(args[i]));
+		ft_lstadd_back(&stack.top, cur_node, stack.size);
+		stack.size++;
+		i++;
+	}
+	ft_lst_put_index(stack.top, stack.size);
+	return (stack);
+}
+
+int     main(int ac, char **av)
+{
+	(void)ac;
+	int		iter = 0;
+    char	**args;
+	t_stack	a_stack;
+	t_stack	b_stack;
+
+	a_stack.top = NULL;
+	a_stack.size = 0;
+	b_stack.top = NULL;
+	b_stack.size = 0;
+    args = parsing_args(ac, av);
+    if (!args)
+    {
+        return (0);
+    }
+	a_stack = fill_stack(args, a_stack);
+	if (is_sorted(a_stack))
+		return (0);
+}

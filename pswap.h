@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 21:00:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/21 14:08:37 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/23 11:44:54 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+int		is_sorted(t_stack stack);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str);
 int		is_valid_data(char **args);
