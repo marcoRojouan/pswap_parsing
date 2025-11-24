@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 14:19:15 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/11/21 14:19:58 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/24 12:01:33 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,22 @@ t_pslst	*ft_lstlast(t_pslst *lst, int size)
 
 void	ft_lstadd_back(t_pslst **lst, t_pslst *new, int size)
 {
-	t_pslst	*tmp;
+	t_pslst *last;
 
-	tmp = ft_lstlast(*lst, size);
-	if (!tmp)
-		*lst = new;
-	else
-	{
-		tmp->next = new;
-		new->next = *lst;
-		new->prev = tmp;
-	}
+    if (!*lst)
+    {
+        *lst = new;
+        new->next = new;
+        new->prev = new;
+    }
+    else
+    {
+        last = ft_lstlast(*lst, size);
+        last->next = new;
+        new->prev = last;
+        new->next = *lst;
+        (*lst)->prev = new;
+    }
 }
 
 void	ft_lst_put_index(t_pslst *lst, int size)

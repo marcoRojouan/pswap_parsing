@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 13:56:37 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/11/23 14:21:47 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/24 13:24:49 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	sa(t_stack *stack, int flag)
 	tmp->next = stack->top;
 	stack->top = tmp;
 	if (flag == 1)
-		write(1, "sa\n", 3);	
+		write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *stack, int flag)

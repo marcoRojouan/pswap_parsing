@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 21:00:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/23 11:44:54 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:15:09 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		white_space(char c);
 t_pslst	*ft_lstnew(int content);
 void	ft_lstadd_back(t_pslst **lst, t_pslst *new, int size);
 int		ft_lstsize(t_pslst *lst);
+t_pslst	*ft_lstlast(t_pslst *lst, int size);
 void	ft_lst_put_index(t_pslst *lst, int size);
 
 #endif
