@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 12:15:42 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/11/24 13:38:50 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/24 14:50:08 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,8 @@ t_stack	fill_stack(char **args, t_stack stack)
 	return (stack);
 }
 
-void     push_swap_parsing(int ac, char **av)
+t_stack	push_swap_parsing(int ac, char **av)
 {
-	
 	int		iter = 0;
     char	**args;
 	t_stack	a_stack;

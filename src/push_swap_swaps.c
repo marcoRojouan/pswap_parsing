@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 13:56:37 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/11/24 13:24:49 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/24 15:22:07 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,40 @@
 
 void	sa(t_stack *stack, int flag)
 {
-	t_pslst	*tmp;
+	t_pslst	*first;
+	t_pslst *second;
 
 	if (!stack || !stack->top || !stack->top->next)
 		return ;
-	tmp = stack->top->next;
-	stack->top->next = tmp->next;
-	tmp->next = stack->top;
-	stack->top = tmp;
+	first = stack->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->top = second;
+	second->prev = first->prev;
+	first->prev = second;
+	if (first->next)
+		first->next->prev = first;
 	if (flag == 1)
 		write(1, "sa\n", 3);
 }
 
 void	sb(t_stack *stack, int flag)
 {
-	t_pslst	*tmp;
+	t_pslst	*first;
+	t_pslst *second;
 
 	if (!stack || !stack->top || !stack->top->next)
 		return ;
-	tmp = stack->top->next;
-	stack->top->next = tmp->next;
-	tmp->next = stack->top;
-	stack->top = tmp;
+	first = stack->top;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	stack->top = second;
+	second->prev = first->prev;
+	first->prev = second;
+	if (first->next)
+		first->next->prev = first;
 	if (flag == 1)
 		write(1, "sb\n", 3);
 }
