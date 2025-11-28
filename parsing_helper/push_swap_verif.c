@@ -6,27 +6,11 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/21 12:21:04 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/11/23 11:56:00 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:18:51 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pswap.h"
-
-int	is_sorted(t_stack stack)
-{
-	t_pslst *tmp;
-
-	if (!stack.top)
-		return (1);
-	tmp = stack.top;
-	while (tmp && tmp->next)
-	{
-		if (tmp->data > tmp->next->data)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
 
 int	is_non_num(char **args)
 {

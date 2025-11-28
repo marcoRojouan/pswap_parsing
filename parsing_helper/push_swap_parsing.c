@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 12:15:42 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/11/24 14:50:08 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/28 15:21:36 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,33 +56,32 @@ char	**parsing_args(int ac, char **av)
 
 t_stack	fill_stack(char **args, t_stack stack)
 {
-	t_pslst *cur_node;
 	int		i; 
 	
 	i = 0;
 	while (args[i])
+		i++;
+	stack.values = malloc(sizeof(int) * i);
+	i = 0;
+	while (args[i])
 	{
-		cur_node = ft_lstnew(ft_atoi(args[i]));
-		ft_lstadd_back(&stack.top, cur_node, stack.size);
+		stack.values[i] = ft_atoi(args[i]);
 		stack.size++;
 		i++;
 	}
-	ft_lst_put_index(stack.top, stack.size);
 	return (stack);
 }
 
 t_stack	push_swap_parsing(int ac, char **av)
 {
-	int		iter = 0;
     char	**args;
-	t_stack	a_stack;
+	t_stack	stack;
 
-	a_stack.top = NULL;
-	a_stack.size = 0;
+	stack.values = NULL;
+	stack.size = 0;
 	args = parsing_args(ac, av);
-    if (!args)
-    {
-        return ;
-    }
-	a_stack = fill_stack(args, a_stack);
+	if (!args)
+		return (stack);
+	stack = fill_stack(args, stack);
+	return (stack);
 }

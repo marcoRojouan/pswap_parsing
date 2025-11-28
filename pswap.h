@@ -6,39 +6,40 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 21:00:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/24 11:15:09 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/28 13:57:27 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PSWAP_H
 # define PSWAP_H
 
-# include <stdlib.h>
-
-typedef struct s_pslst
-{
-	int				index;
-	int				data;
-	struct s_pslst	*next;
-	struct s_pslst	*prev;
-}	t_pslst;
+#include <stdlib.h>
+#include <unistd.h>
 
 typedef struct s_stack
 {
-	t_pslst	*top;
+	int		*values;
 	int		size;
 }	t_stack;
 
-int		is_sorted(t_stack stack);
+int		is_sorted(t_stack *stack, int size);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str);
 int		is_valid_data(char **args);
 int		ft_atoi(const char *nptr);
 int		white_space(char c);
-t_pslst	*ft_lstnew(int content);
-void	ft_lstadd_back(t_pslst **lst, t_pslst *new, int size);
-int		ft_lstsize(t_pslst *lst);
-t_pslst	*ft_lstlast(t_pslst *lst, int size);
-void	ft_lst_put_index(t_pslst *lst, int size);
+t_stack	push_swap_parsing(int ac, char **av);
+void	sa(t_stack *stack, int flag);
+void	sb(t_stack *stack, int flag);
+void	ss(t_stack *a_stack, t_stack *b_stack);
+void	pa(t_stack *a_stack, t_stack *b_stack);
+void	pb(t_stack *b_stack, t_stack *a_stack);
+void	ra(t_stack *a_stack, int flag);
+void	rb(t_stack *b_stack, int flag);
+void	rr(t_stack *a_stack, t_stack *b_stack);
+void	rra(t_stack *a_stack, int flag);
+void	rrb(t_stack *b_stack, int flag);
+void	rrr(t_stack *a_stack, t_stack *b_stack);
+void	min_to_top(t_stack *stack);
 
 #endif
