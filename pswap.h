@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 21:00:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/28 13:57:27 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/11/29 14:19:39 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-int		is_sorted(t_stack *stack, int size);
-char	*ft_strjoin(char *s1, char *s2);
-char	**ft_split(char *str);
+t_stack	push_swap_parsing(int ac, char **av);
+
+int		is_sorted(t_stack *stack);
 int		is_valid_data(char **args);
 int		ft_atoi(const char *nptr);
 int		white_space(char c);
-t_stack	push_swap_parsing(int ac, char **av);
+
+char	**ft_split(char *str);
+char	*ft_strjoin(char *s1, char *s2);
+
 void	sa(t_stack *stack, int flag);
 void	sb(t_stack *stack, int flag);
 void	ss(t_stack *a_stack, t_stack *b_stack);
@@ -40,6 +43,10 @@ void	rr(t_stack *a_stack, t_stack *b_stack);
 void	rra(t_stack *a_stack, int flag);
 void	rrb(t_stack *b_stack, int flag);
 void	rrr(t_stack *a_stack, t_stack *b_stack);
-void	min_to_top(t_stack *stack);
+void	sort_2(t_stack *stack);
+void	sort_3(t_stack *stack);
+void	sort_4(t_stack *a_stack, t_stack *b_stack);
+void	sort_5(t_stack *a_stack, t_stack *b_stack);
+void	move_min(t_stack *stack);
 
 #endif
