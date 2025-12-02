@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 21:00:27 by loup              #+#    #+#             */
-/*   Updated: 2025/11/29 14:19:39 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/12/02 13:29:44 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		is_sorted(t_stack *stack);
 int		is_valid_data(char **args);
 int		ft_atoi(const char *nptr);
 int		white_space(char c);
+int		*indexing_tab(int *stack_values, int size);
 
 char	**ft_split(char *str);
 char	*ft_strjoin(char *s1, char *s2);
