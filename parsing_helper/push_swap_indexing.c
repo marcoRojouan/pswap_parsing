@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 12:47:59 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/12/02 16:52:20 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/12/05 12:14:08 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int *int_arr_cpy(int *values, int size)
 	return (new_tab);
 }
 
-void *ft_bubble_sort(int *tab, int size)
+void ft_bubble_sort(int *tab, int size)
 {
 	int i;
 	int j;

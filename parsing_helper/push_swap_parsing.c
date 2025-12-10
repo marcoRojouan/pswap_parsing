@@ -6,7 +6,7 @@
 /*   By: mrojouan <mrojouan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 12:15:42 by mrojouan          #+#    #+#             */
-/*   Updated: 2025/12/02 13:30:08 by mrojouan         ###   ########.fr       */
+/*   Updated: 2025/12/05 11:28:08 by mrojouan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ t_stack	push_swap_parsing(int ac, char **av)
 		return (stack);
 	stack = fill_stack(args, stack);
 	stack.values = indexing_tab(stack.values, stack.size);
-	
 	return (stack);
 }
